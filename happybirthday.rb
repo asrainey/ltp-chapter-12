@@ -15,12 +15,12 @@ def calculate_age
   month_number = month_name.index(month) #+ 1
 
   age = Time.new - Time.local(year, month_number, day)
+  age_minutes = age/60
+  age_hours = age_minutes/60
+  age_days = age_hours/24
+  age_years = age_days/365
 
-  return 'SPANK!' * age
+  return 'SPANK!' * age_years
 end
 
-puts calculate_age
-
-
-
-calculate_age(my_year, my_month, my_day)
+calculate_age
