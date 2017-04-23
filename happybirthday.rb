@@ -12,7 +12,7 @@ def calculate_age
                 'May', 'June', 'July', 'August',
                 'September', 'October', 'November', 'December']
 
-  month_number = month_name.index(month) #+ 1
+  month_number = (month_name.index(month)) + 1
 
   age = Time.new - Time.local(year, month_number, day)
   age_minutes = age/60
@@ -20,7 +20,7 @@ def calculate_age
   age_days = age_hours/24
   age_years = age_days/365
 
-  spanks = 'SPANK!' * age_years
+  spanks = 'SPANK! ' * age_years
   puts spanks
 end
 
