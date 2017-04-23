@@ -20,7 +20,8 @@ def calculate_age
   age_days = age_hours/24
   age_years = age_days/365
 
-  return 'SPANK!' * age_years
+  spanks = 'SPANK!' * age_years
+  puts spanks
 end
 
 calculate_age
