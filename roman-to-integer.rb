@@ -1,37 +1,39 @@
-def convert_number
-  roman_hash = {}
-  roman_hash49 = {}
+#Needed to review solution to complete
 
-  roman_hash['I'] = 1
-  roman_hash['V'] = 5
-  roman_hash['X'] = 10
-  roman_hash['L'] = 50
-  roman_hash['C'] = 100
-  roman_hash['D'] = 500
-  roman_hash['M'] = 1000
+def convert_number roman_numeral
 
-  roman_hash49['IV'] = 4
-  roman_hash49['IX'] = 9
-  roman_hash49['IL'] = 49
-  roman_hash49['IC'] = 99
-  roman_hash49['ID'] = 499
-  roman_hash49['IM'] = 999
+  roman_hash = {'I' => 1,
+                'V' => 5,
+                'X' => 10,
+                'L' => 50,
+                'C' => 100,
+                'D' => 500,
+                'M' => 1000}
 
-  puts 'Please enter a Roman numeral'
-    roman_numeral = gets.chomp
+  total = 0
+  prev = 0
+  index = roman_numeral.length - 1
 
-#  if roman_numeral #need condition to catch invalid characters
-#    puts 'That is not a valid Roman numeral.'
-#    puts 'Please enter a Roman numeral'
-#    roman_numeral = gets.chomp
-#  end
+  while index >= 0
+    c = roman_numeral[index].upcase
+    index = index - 1
+    value = roman_hash[c]
+    if !value
+      puts 'This is not a valid roman numeral'
+      return
+    end
 
-# start with roman_hash49
-# need to run those over the roman numeral and substitute 'number +'
-# roman_numeral.gsub(/hash-key/, ' number-value +')
-
-
+    if value < prev
+      value = value * -1
+    else
+      prev = value
+    end
+    total = total + value
+  end
+  total
 end
 
+puts 'Please enter a Roman numeral'
+roman_numeral = gets.chomp
 
-convert_number
+puts convert_number roman_numeral
